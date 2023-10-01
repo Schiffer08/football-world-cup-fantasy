@@ -11,6 +11,8 @@ import Swal from 'sweetalert2'
 
 export class AppComponent {
 
+  title = 'football-world-cup-fantasy';
+
   constructor() {}
 
   ngOnInit() {

@@ -7,6 +7,7 @@ import { HttpCacheInterceptorModule, useHttpCacheLocalStorage } from '@ngneat/ca
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { CreateTeamComponent } from './components/create-team/create-team.component';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 @NgModule({
   declarations: [
@@ -18,7 +19,8 @@ import { CreateTeamComponent } from './components/create-team/create-team.compon
     FormsModule,
     HttpClientModule,
     HttpCacheInterceptorModule.forRoot(),
-    AppRoutingModule
+    AppRoutingModule,
+    BrowserAnimationsModule
   ],
   providers: [useHttpCacheLocalStorage],
   bootstrap: [AppComponent]
