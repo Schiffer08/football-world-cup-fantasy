@@ -1,0 +1,88 @@
+<div class="text-center" style="padding: 1%;">
+  <div class="row">
+    <div class="col-md-6">
+      <div class="container">
+        <div class="card">
+          <h2>Crea tu Equipo de Football</h2>
+          <form>
+            <div class="row mt-3 mb-3" *ngFor="let team of sizeTeam; let i = index">
+              <div class="col-md-1 content-center p-0"><h3 class="m-0 p-0"># {{i + 1}}</h3></div>
+      
+              <div class="col-md-3">
+                <div class="form-group">
+                  <label for="team">Seleccione un equipo:</label>
+                  <select class="form-control" id="team" (change)="setTeamId($event, i)">
+                    <option value="" disabled selected>Seleccione una opción</option>
+                    <option *ngFor="let team of nationalTeams" [value]="team.team.id">{{team.team.name}}</option>
+                  </select>
+                </div>
+              </div>
+        
+              <div class="col-md-4">
+                <div class="form-group">
+                  <label for="player">Seleccione un jugador:</label>
+                  <select class="form-control" id="player" [(ngModel)]="selectedPlayerNames[i]" name="player" [ngModelOptions]="{ standalone: true }" (change)="setPlayerId($event, i)">
+                    <option value="" selected>Selecciona una opción</option>
+                    <option *ngFor="let player of arrPlayers[i]" [value]="player.player?.name">{{player.player?.firstname}} {{player.player.lastname}}</option>
+                  </select>
+                </div>
+              </div>
+        
+              <div class="col-md-3">
+                <div class="form-group">
+                  <label for="position">Seleccione una posicion:</label>
+                  <select class="form-control" id="position" (change)="setPositionId($event, i)">
+                    <option value="" disabled selected>Seleccione una opción</option>
+                    <option *ngFor="let position of arrPositions" [value]="position.id">{{position.value}}</option>
+                  </select>
+                </div>
+              </div>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+
+    <div class="col-md-6">
+      <div class="container mt-3" style="padding-bottom: 15px;">
+        <div class="wrapper">
+          <img src="../assets/img/cancha.jpg" class="primary">
+          <div [class]="'secondary-' + (i + 1)" *ngFor="let team of sizeTeam; let i = index">
+            <p style="margin-top: 25px;"><b>{{i + 1}}</b></p>
+            <p style="margin-top: 25px; width: 100px;"><b>{{selectedPlayerNames[i]}}</b></p>
+          </div>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-md-12 mt-3">
+          <div class="card">
+            <h2>Leyenda del Equipo</h2>
+            <div class="legend-team">
+              <h4>Attackers: {{countAttackers}}/2</h4>
+              <h4>Defenders: {{countDefenders}}/4</h4>
+            </div>
+            <div class="legend-team">
+              <h4>Goalkeepers: {{countGoalkeepers}}/2</h4>
+              <h4>Midfielders: {{countMidfielders}}/4</h4>
+            </div>
+            <div class="legend-team">
+              <h4>Coach: {{countCoach}}/1</h4>
+            </div>
+            <div class="legend-team">
+              <h4>Equipo total: {{total}}/13</h4>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="col-md-12 mt-3">
+            <button [disabled]="total !== 13" class="btn btn-primary w-100" (click)="saveTeam()">Save Team</button>
+            <button class="btn btn-primary w-100 mt-3" (click)="clearTeam()">Limpiar Equipo</button>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+</div>  

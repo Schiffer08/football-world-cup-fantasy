@@ -1,1 +1,44 @@
-/* You can add global styles to this file, and also import other style files */
+@import '~bootstrap/dist/css/bootstrap.min.css';
+
+body {
+    background-image: url("../src/assets/img/background.jpg");
+    opacity: 0.8;
+    background-repeat: round;
+    width: 100%;
+    height: 100vh;
+    overflow-x: hidden;
+}
+
+html {
+    overflow-x: hidden;
+}
+
+.card {
+    opacity: 0.9;
+    background-color: darkgray;
+    border-radius: 12px;
+    box-shadow: none;
+}
+
+.content-center {
+    display: flex;
+    align-items: end;
+    justify-content: center;
+}
+
+.all-align-content {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    gap: 16px;
+}
+
+.overflow-none { overflow: hidden; }
+
+.m-0 { margin: 0px; }
+.p-0 { padding: 0px; }
+.p-50 { padding: 50px; }
+.w-50 { width: 50% !important; }
+.w-80 { width: 80% !important; }
+.w-100 { width: 100% !important; }
