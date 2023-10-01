@@ -1,44 +1,52 @@
-// Karma configuration file, see link for more information
-// https://karma-runner.github.io/1.0/config/configuration-file.html
-
 module.exports = function (config) {
   config.set({
-    basePath: '',
+    // Marco de pruebas a utilizar (Jasmine en este caso)
     frameworks: ['jasmine', '@angular-devkit/build-angular'],
+
+    // Lista de complementos de Karma
     plugins: [
       require('karma-jasmine'),
       require('karma-chrome-launcher'),
-      require('karma-jasmine-html-reporter'),
-      require('karma-coverage'),
       require('@angular-devkit/build-angular/plugins/karma')
     ],
-    client: {
-      jasmine: {
-        // you can add configuration options for Jasmine here
-        // the possible options are listed at https://jasmine.github.io/api/edge/Configuration.html
-        // for example, you can disable the random execution with `random: false`
-        // or set a specific seed with `seed: 4321`
-      },
-      clearContext: false // leave Jasmine Spec Runner output visible in browser
-    },
-    jasmineHtmlReporter: {
-      suppressAll: true // removes the duplicated traces
-    },
-    coverageReporter: {
-      dir: require('path').join(__dirname, './coverage/football-world-cup-fantasy'),
-      subdir: '.',
-      reporters: [
-        { type: 'html' },
-        { type: 'text-summary' }
-      ]
-    },
-    reporters: ['progress', 'kjhtml'],
-    port: 9876,
-    colors: true,
-    logLevel: config.LOG_INFO,
-    autoWatch: true,
+
+    // Archivos de pruebas y archivos relacionados
+    files: [
+      // Agrega aquí tus archivos de prueba, por ejemplo, '**/*.spec.ts'
+    ],
+
+    // Configuración de los navegadores en los que se ejecutarán las pruebas
     browsers: ['Chrome'],
+
+    // Configuración de Jasmine
+    jasmineHtmlReporter: {
+      suppressAll: true, // Evita que se muestren detalles innecesarios en la salida
+    },
+
+    // Configuración de captura de navegador
+    captureTimeout: 60000, // Tiempo máximo en milisegundos para capturar un navegador
+    browserDisconnectTolerance: 3, // Número de intentos antes de considerar que un navegador se desconectó
+    browserDisconnectTimeout: 10000, // Tiempo máximo en milisegundos para esperar una reconexión del navegador
+    browserNoActivityTimeout: 60000, // Tiempo máximo en milisegundos para esperar actividad en el navegador
+
+    // Configuración de informes
+    // reporters: ['progress', 'kjhtml'],
+
+    // Puerto en el que se ejecuta Karma
+    port: 9876,
+
+    // Niveles de registro de Karma (configura según tus necesidades)
+    logLevel: config.LOG_INFO,
+
+    // Archivos de código fuente y pruebas que deben observarse para cambios
+    autoWatch: true,
+
+    // Modo de ejecución de una sola vez o en continuo
     singleRun: false,
-    restartOnFileChange: true
+
+    // Configuración adicional de Angular para cargar y compilar archivos
+    angularCli: {
+      environment: 'dev'
+    }
   });
 };
